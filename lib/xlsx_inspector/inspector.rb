@@ -12,6 +12,7 @@ module XLSXInspector
 		def initialize()
 	  end
 
+	  # Returns either nil or the total amount of cells of the first spreadsheet
 	  def inspect(xlsx_filename)
   		xml_block = ''
 	  	dimension = nil
@@ -60,8 +61,8 @@ module XLSXInspector
 	  	alphabet_conversion = {}
 	  	index = 0
 	  	('A'..'Z').each do |x|
-	  		index += 1
 	  		alphabet_conversion[x.to_sym] = index
+	  		index += 1
 	  	end
 
 	  	topleft, bottomright = dimension.split(':')
@@ -78,7 +79,7 @@ module XLSXInspector
 	  end
 
 	  def get_numerical_value(letters, alphabet_conversion)
-	  	accumulator = -1
+	  	accumulator = 0
 	  	position = 0
 	  	while (letters.size() > 0)
 	  		accumulator += alphabet_conversion[letters[-1].to_sym] + (26 ** position)

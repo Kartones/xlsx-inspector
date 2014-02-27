@@ -16,9 +16,22 @@ Roo and just get the number of columns and rows.
 
 *This is not meant for operating with the XLSX*, its sole purpose is to estimate the number of cells.
 
+# Usage #
+
+Check `sample1.rb` in the examples folder, but for the lazy ones, it is damm simple:
+
+``` ruby
+require_relative '../lib/xlsx_inspector.rb'
+
+myTest = XLSXInspector::Inspector.new()
+puts myTest.inspect('200krows.xlsx')
+```
+
+It either returns `nil` or an integer of the total estimated cells. Estimation is done by multiplying # columns x # rows.
+
 # Roadmap #
 
 * documentation (here)
 * tests
-* minimal documentation
 * error handling
+* allow to choose which sheet to scan, or "scan all"
